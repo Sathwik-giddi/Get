@@ -118,7 +118,7 @@ def main() -> int:
     again = run_once(CONVOY_SCENARIO, upload(DATASET / "scenario_1_convoy"))
     base_trace = run_once(CONVOY_SCENARIO, upload(DATASET / "scenario_1_convoy"))
     deterministic = (
-        stable_form(again) == stable_form(base_trace) if again.get("mode") == "mock" else None
+        stable_form(again) == stable_form(base_trace) if again.get("mode") == "heuristic" else None
     )
 
     probe = run_once(CONVOY_SCENARIO, upload(DATASET / "scenario_1_convoy"))
@@ -132,7 +132,7 @@ def main() -> int:
     }
     REPORT.write_text(json.dumps(report, indent=2))
     print(f"\nstability under rewording/shuffle: {stability:.2f}")
-    print(f"deterministic rerun (mock only): {deterministic}")
+    print(f"deterministic rerun (heuristic only): {deterministic}")
     print(f"mean structure score: {report['mean_structure']:.2f}")
     print(f"report: {REPORT.relative_to(ROOT)}")
 

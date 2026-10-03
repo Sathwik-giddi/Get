@@ -95,7 +95,7 @@ class SkillResult(BaseModel):
 
 class RunTrace(BaseModel):
     run_id: str
-    mode: Literal["gemini", "vertex", "mock"]
+    mode: Literal["gemini", "vertex", "heuristic"]
     model: str
     scenario: str
     sources: list[str]

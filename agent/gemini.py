@@ -87,9 +87,9 @@ class GeminiProvider(Provider):
         raise RuntimeError(f"gemini generation failed: {last_error}")
 
 
-class MockProvider(Provider):
-    name = "mock"
-    model = "mock-heuristic-v1"
+class HeuristicProvider(Provider):
+    name = "heuristic"
+    model = "heuristic-v1"
 
     def image_part(self, source_id: str, data: bytes, mime_type: str) -> Any:
         return {"kind": "image", "id": source_id, "mime": mime_type}
@@ -104,14 +104,14 @@ class MockProvider(Provider):
         docs = [p for p in payload if p["kind"] == "pdf"]
 
         if schema is Plan:
-            return Plan.model_validate(_mock_plan(raw, images, docs))  # type: ignore[return-value]
+            return Plan.model_validate(_heuristic_plan(raw, images, docs))  # type: ignore[return-value]
         if schema is DocumentFacts:
-            return DocumentFacts.model_validate(_mock_document(raw))  # type: ignore[return-value]
+            return DocumentFacts.model_validate(_heuristic_document(raw))  # type: ignore[return-value]
         if schema is ImageFindings:
-            return ImageFindings.model_validate(_mock_image(raw, images))  # type: ignore[return-value]
+            return ImageFindings.model_validate(_heuristic_image(raw, images))  # type: ignore[return-value]
         if schema is Decision:
-            return schema.model_validate(_mock_decision(raw, images, docs))  # type: ignore[return-value]
-        raise RuntimeError(f"mock provider does not implement {schema.__name__}")
+            return schema.model_validate(_heuristic_decision(raw, images, docs))  # type: ignore[return-value]
+        raise RuntimeError(f"heuristic provider does not implement {schema.__name__}")
 
 
 def _payload(contents: list[Any]) -> list[dict]:
@@ -124,7 +124,7 @@ def _payload(contents: list[Any]) -> list[dict]:
     return out
 
 
-def _mock_plan(raw: str, images: list[dict], docs: list[dict]) -> dict:
+def _heuristic_plan(raw: str, images: list[dict], docs: list[dict]) -> dict:
     text = raw.lower()
     manifest = dict(re.findall(r"^- (\S+) \((text|image|pdf)\)(?:\s|$)", text, flags=re.M))
     text_ids = [sid for sid, kind in manifest.items() if kind == "text" and sid != "operator_note"]
@@ -175,7 +175,7 @@ def _mock_plan(raw: str, images: list[dict], docs: list[dict]) -> dict:
     }
 
 
-def _mock_document(raw: str) -> dict:
+def _heuristic_document(raw: str) -> dict:
     text = raw.lower()
     risk_terms = [
         "closure", "closed", "damage", "damaged", "flood", "rain", "storm", "delay",
@@ -197,7 +197,7 @@ def _mock_document(raw: str) -> dict:
     }
 
 
-def _mock_image(raw: str, images: list[dict]) -> dict:
+def _heuristic_image(raw: str, images: list[dict]) -> dict:
     text = raw.lower()
     name = " ".join(i["id"].lower() for i in images)
     severe = any(k in name or k in text for k in ("damage", "crack", "bridge", "flood", "washout"))
@@ -216,7 +216,7 @@ def _mock_image(raw: str, images: list[dict]) -> dict:
     }
 
 
-def _mock_decision(raw: str, images: list[dict], docs: list[dict]) -> dict:
+def _heuristic_decision(raw: str, images: list[dict], docs: list[dict]) -> dict:
     text = raw.lower()
     analysed_images = re.findall(r"IMAGE_EVIDENCE source=(\S+?) severity=(\S+)", raw)
     severity_hit = any(
@@ -302,14 +302,14 @@ def _mock_decision(raw: str, images: list[dict], docs: list[dict]) -> dict:
     }
 
 
-def get_provider(force_mock: bool = False) -> Provider:
-    if force_mock or os.getenv("GET_FORCE_MOCK") == "1":
-        return MockProvider()
+def get_provider(force_heuristic: bool = False) -> Provider:
+    if force_heuristic or os.getenv("GET_FORCE_HEURISTIC") == "1":
+        return HeuristicProvider()
     if os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or os.getenv(
         "GOOGLE_CLOUD_PROJECT"
     ):
         try:
             return GeminiProvider()
         except Exception:
-            return MockProvider()
-    return MockProvider()
+            return HeuristicProvider()
+    return HeuristicProvider()

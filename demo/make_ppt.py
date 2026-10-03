@@ -453,7 +453,7 @@ def slide_others(prs):
         ("Prove.", "34 acceptance checks plus a browser gate that measures contrast, keyboard, viewports."),
     ], size=14)
     bullets(slide, mid + Inches(0.35), top, CONTENT_W / 2 - Inches(0.35), [
-        ("Honest today.", "Mock engine until GEMINI_API_KEY is set. The UI says which engine ran."),
+        ("Honest today.", "Heuristic engine until GEMINI_API_KEY is set. The UI says which engine ran."),
         ("Next.", "Live Gemini key, Cloud Run deploy from the Dockerfile, second scenario in the demo."),
         ("Ask.", "Convoy B is waiting on Route 7. Questions welcome."),
     ], size=14)

@@ -48,7 +48,7 @@ print("\n[1] health and skills")
 h = client.get("/health")
 check("health 200", h.status_code == 200, h.text[:200])
 check("skills registered", set(h.json()["skills"]) == SKILL_INSTRUCTIONS)
-check("mode is reported", h.json()["mode"] in {"mock", "gemini", "vertex"})
+check("mode is reported", h.json()["mode"] in {"heuristic", "gemini", "vertex"})
 
 s = client.get("/skills")
 check("skills endpoint 200", s.status_code == 200)
@@ -162,11 +162,11 @@ if r4.status_code == 200:
     check("text-only produced a decision", len(t4["decision"]["decision"]) > 10)
     check("text-only still has a chain", len(t4["decision"]["reasoning_chain"]) >= 2)
 
-print("\n[8] determinism in mock mode")
+print("\n[8] determinism in heuristic mode")
 a = client.post("/process", data={"scenario": "Decide."}, files=upload(DATASET / "scenario_1_convoy"))
 b = client.post("/process", data={"scenario": "Decide."}, files=upload(DATASET / "scenario_1_convoy"))
-if a.json()["mode"] == "mock" and b.json()["mode"] == "mock":
-    check("mock output is stable", a.json()["decision"] == b.json()["decision"])
+if a.json()["mode"] == "heuristic" and b.json()["mode"] == "heuristic":
+    check("heuristic output is stable", a.json()["decision"] == b.json()["decision"])
 
 print(f"\n{passed} passed, {len(failed)} failed")
 for f in failed:

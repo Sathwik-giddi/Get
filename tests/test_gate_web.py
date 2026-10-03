@@ -216,9 +216,9 @@ def main() -> int:
 
         print("\nR-27  states")
         body = page.inner_text("body")
-        has_mock_notice = "Heuristic output, not a model" in body
-        print(f"  {'PASS' if has_mock_notice else 'FAIL'}  engine state is stated in words")
-        if not has_mock_notice:
+        has_engine_notice = "Heuristic output, not a model" in body
+        print(f"  {'PASS' if has_engine_notice else 'FAIL'}  engine state is stated in words")
+        if not has_engine_notice:
             failures.append("no engine state statement")
 
         has_audit = page.locator(".audit tbody tr").count() > 0

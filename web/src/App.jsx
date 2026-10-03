@@ -241,7 +241,7 @@ export default function App() {
           <header className="masthead">
             <h1>Get</h1>
             <p>One situation, several sources, one call you can check.</p>
-            {mode !== 'mock' && health && (
+            {mode !== 'heuristic' && health && (
               <p className="runmeta" style={{ marginTop: 8 }}>
                 engine {mode} / {modeState.label}
               </p>
@@ -251,7 +251,7 @@ export default function App() {
           {health && (
             <p className="runmeta" style={{ marginTop: 8 }}>
               engine {mode}.{' '}
-              {mode === 'mock'
+              {mode === 'heuristic'
                 ? 'Heuristic output, not a model. Set GEMINI_API_KEY in .env and restart to switch engines.'
                 : modeState.label}
             </p>

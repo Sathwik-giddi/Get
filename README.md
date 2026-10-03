@@ -63,7 +63,7 @@ Ideas below are cited where they are used. No code was taken from any of them.
 ## Layout
 
 ```
-agent/          core.py orchestration, gemini.py provider + mock, schemas.py,
+agent/          core.py orchestration, gemini.py provider + heuristic fallback, schemas.py,
                 registry.py skill loader, storage.py uploads, audit.py log
 skills/         one SKILL.md per skill, frontmatter declares the contract
 api/            FastAPI service (deployable to Cloud Run as-is)
@@ -98,12 +98,12 @@ The agent runs in one of three modes, and the UI always tells you which.
 
 | Mode | When | What it is |
 | --- | --- | --- |
-| `mock` | no credentials present, or `GET_FORCE_MOCK=1` | heuristic stand-in, no network calls. Fine for building and for rehearsing the demo. |
+| `heuristic` | no credentials present, or `GET_FORCE_HEURISTIC=1` | keyword-rule stand-in, no network calls. Fine for building and for rehearsing the demo. |
 | `gemini` | `GEMINI_API_KEY` is set | Gemini via the AI Developer API |
 | `vertex` | `GOOGLE_CLOUD_PROJECT` is set | Gemini on Vertex AI |
 
-Never present mock output as a real run. The UI shows an amber banner when the mode is
-`mock` for exactly that reason.
+Never present heuristic output as a real run. The UI states the engine in words on every
+screen, including when the engine is heuristic.
 
 ```bash
 cp .env.example .env      # then paste a key into GEMINI_API_KEY
@@ -169,7 +169,7 @@ Local-first by default, cloud-enabled by flag. Nothing breaks when a flag is off
 | `GOOGLE_CLOUD_PROJECT` | Gemini runs on Vertex AI instead of the AI Developer API |
 | `GET_BIGQUERY=1` | audit rows are inserted into BigQuery as well as JSONL |
 | `GET_GCS=1` + `GCS_BUCKET` | uploads are mirrored to Cloud Storage and referenced by `gs://` URI |
-| `GET_FORCE_MOCK=1` | force mock mode even with credentials present |
+| `GET_FORCE_HEURISTIC=1` | force heuristic mode even with credentials present |
 
 For Cloud Run, the `Dockerfile` builds both halves into one image: Python deps, then
 `npm ci` and `npm run build`, then uvicorn serves the API and the built front end from the
@@ -222,7 +222,7 @@ The acceptance checks cover what the demo depends on: every planned skill execut
 is analysed twice, the plan always terminates in `make_decision`, every reasoning step names a
 skill it really came from, evidence is attributed and flagged, the audit row lands, the duty
 officer can accept or override a run with the latest verdict winning, blank input
-is rejected, and mock mode is deterministic.
+is rejected, and heuristic mode is deterministic.
 
 The eval harness runs both demo scenarios plus reworded and shuffled variants, scores each run
 on ten structural checks, and measures decision stability across the variants. It writes
@@ -250,5 +250,5 @@ Drives the real UI with a headless browser and writes `demo/shots/`:
 | `02_convoy_reasoning.png` | the reasoning chain, risks, rejected alternatives, escalation |
 | `03_warehouse_*.png` | the same UI on the second scenario |
 
-Regenerate these after you add a real Gemini key, so nothing in the deck carries the amber
-mock-mode banner.
+Regenerate these after you add a real Gemini key, so nothing in the deck carries the
+heuristic-mode notice.

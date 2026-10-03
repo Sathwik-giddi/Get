@@ -1,7 +1,7 @@
 export const DECISION_SKILL = 'make_decision'
 
 export const MODE_STATE = {
-  mock: { label: 'heuristic, not a model', color: 'var(--sb-caution)' },
+  heuristic: { label: 'heuristic, not a model', color: 'var(--sb-caution)' },
   gemini: { label: 'live model run', color: 'var(--sb-live)' },
   vertex: { label: 'live model run on Vertex AI', color: 'var(--sb-cloud)' },
 }

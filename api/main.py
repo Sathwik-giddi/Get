@@ -156,11 +156,11 @@ if SERVE_WEB and WEB_DIST.is_dir():
 
 @app.post("/mode")
 def set_mode(mode: str) -> dict:
-    if mode not in {"mock", "auto"}:
-        raise HTTPException(status_code=422, detail="mode must be mock or auto")
-    if mode == "mock":
-        os.environ["GET_FORCE_MOCK"] = "1"
+    if mode not in {"heuristic", "auto"}:
+        raise HTTPException(status_code=422, detail="mode must be heuristic or auto")
+    if mode == "heuristic":
+        os.environ["GET_FORCE_HEURISTIC"] = "1"
     else:
-        os.environ.pop("GET_FORCE_MOCK", None)
+        os.environ.pop("GET_FORCE_HEURISTIC", None)
     agent.provider = get_provider()
     return {"mode": agent.provider.name, "model": agent.provider.model}
