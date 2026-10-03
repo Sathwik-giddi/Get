@@ -191,7 +191,14 @@ export default function App() {
         <>
           <Call decision={trace.decision} trace={trace} />
           <div className="split">
-            <Trace plan={trace.plan} decision={trace.decision} />
+            <Trace
+              decision={trace.decision}
+              summary={`${trace.skill_results.length + 1} skill calls across ${
+                trace.sources.length
+              } sources, decided by ${
+                trace.plan.skills[trace.plan.skills.length - 1]?.skill ?? 'make_decision'
+              }.`}
+            />
             <Evidence decision={trace.decision} />
           </div>
           <Officer runId={trace.run_id} onRecorded={refreshAudit} />

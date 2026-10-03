@@ -134,22 +134,22 @@ def _heuristic_plan(raw: str, images: list[dict], docs: list[dict]) -> dict:
         skills.append(
             {
                 "skill": "analyze_document",
-                "why": "A structured document carries the authoritative forecast and constraints.",
+                "why": f"Read {doc_id}: the structured source. Tables, thresholds, advisories.",
                 "uses": [doc_id],
             }
         )
     skills.append(
         {
             "skill": "analyze_document",
-            "why": "The operator's own note states the intent and the hard delivery window.",
-            "uses": ["operator_note"],
+                "why": "Read operator_note: the intent and the hard delivery window.",
+                "uses": ["operator_note"],
         }
     )
     for text_id in text_ids:
         skills.append(
             {
                 "skill": "analyze_document",
-                "why": "A free-text source carries field observations not in any document.",
+                "why": f"Read {text_id}: field observations in the operator's own words.",
                 "uses": [text_id],
             }
         )
@@ -157,7 +157,7 @@ def _heuristic_plan(raw: str, images: list[dict], docs: list[dict]) -> dict:
         skills.append(
             {
                 "skill": "analyze_image",
-                "why": "Visual condition cannot be read from any text source.",
+                "why": f"Look at {img['id']}: damage and conditions no text source can confirm.",
                 "uses": [img["id"]],
             }
         )

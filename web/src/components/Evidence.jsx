@@ -39,10 +39,10 @@ export function Evidence({ decision }) {
       )}
 
       {decision.alternatives_considered.length > 0 && (
-        <section aria-labelledby="alternatives-heading">
-          <p className="eyebrow" id="alternatives-heading">
-            Rejected first
-          </p>
+        <details className="raw">
+          <summary>
+            Rejected first ({decision.alternatives_considered.length})
+          </summary>
           {decision.alternatives_considered.map((alt, index) => (
             <div className="ev" key={index}>
               <strong>{alt.option}</strong>
@@ -50,7 +50,7 @@ export function Evidence({ decision }) {
               <span className="why">{alt.rejected_because}</span>
             </div>
           ))}
-        </section>
+        </details>
       )}
 
       <section aria-labelledby="escalation-heading">

@@ -78,13 +78,15 @@ thing to avoid here, not monospace as a tool.
 
 The trace rail.
 
-A single vertical numbered rail runs down both the plan and the reasoning chain, so the two
-read as one continuous line of custody: this source became this skill became this step became
-this call. Same glyph, same indent, same alignment in both places. That repetition is the
-identity. It is also the product's argument, drawn rather than described.
+A single vertical numbered rail runs down the reasoning chain only: this step concluded
+because that skill reported this. The plan used to share the rail and the page repeated
+itself, so the plan moved out of the main view. What survives of it is one summary line
+(how many skill calls across how many sources, decided by which step) and the full plan in
+the raw trace where the auditor finds it. The motif is the same glyph, indent, and
+alignment; it just runs once now.
 
-Each rail step carries its source ids in the gutter, which is why the plan and the chain can
-share one visual language instead of being two card lists.
+Each reasoning step names its skill inline, and every finding is attributed to its source
+in the evidence column, so nothing the plan rail used to say is lost.
 
 ## Radii
 
@@ -117,8 +119,8 @@ ENERGY 2: this is a console, not a poster. It says what it is immediately and do
 perform. The single moment of high contrast is the decision.
 
 RHYTHM 2: three distinct compositions, not one repeated card grid. The decision is
-full-width and asymmetric. The plan and the chain share a rail, so they are one column that
-scans vertically. Evidence, risks and alternatives form a dense right column that reads as a
+full-width and asymmetric. The reasoning chain is one column that scans vertically, under a
+single summary line naming what ran and what decided. Evidence, risks and alternatives form a dense right column that reads as a
 list rather than as cards, because they are reference material, not headlines.
 
 MOTION 1: hover and focus only, as above.
