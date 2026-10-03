@@ -1,0 +1,52 @@
+{
+  "engine": "mock",
+  "model": "mock-heuristic-v1",
+  "cases": [
+    {
+      "case": "convoy/base",
+      "structure": 1.0,
+      "confidence": 0.93,
+      "latency_ms": 41,
+      "decision": "Hold Convoy B and reroute it via Route 7, then re-clear the original crossing.",
+      "failed": []
+    },
+    {
+      "case": "convoy/reworded",
+      "structure": 1.0,
+      "confidence": 0.93,
+      "latency_ms": 4,
+      "decision": "Hold Convoy B and reroute it via Route 7, then re-clear the original crossing.",
+      "failed": [],
+      "stable_vs_base": true
+    },
+    {
+      "case": "convoy/shuffled",
+      "structure": 1.0,
+      "confidence": 0.93,
+      "latency_ms": 4,
+      "decision": "Hold Convoy B and reroute it via Route 7, then re-clear the original crossing.",
+      "failed": [],
+      "stable_vs_base": true
+    },
+    {
+      "case": "warehouse/base",
+      "structure": 1.0,
+      "confidence": 0.93,
+      "latency_ms": 3,
+      "decision": "Hold Convoy B and reroute it via Route 7, then re-clear the original crossing.",
+      "failed": []
+    },
+    {
+      "case": "warehouse/reworded",
+      "structure": 1.0,
+      "confidence": 0.93,
+      "latency_ms": 3,
+      "decision": "Hold Convoy B and reroute it via Route 7, then re-clear the original crossing.",
+      "failed": [],
+      "stable_vs_base": true
+    }
+  ],
+  "mean_structure": 1.0,
+  "stability": 1.0,
+  "deterministic_rerun": true
+}
