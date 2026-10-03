@@ -68,6 +68,7 @@ agent/          core.py orchestration, gemini.py provider + heuristic fallback, 
 skills/         one SKILL.md per skill, frontmatter declares the contract
 api/            FastAPI service (deployable to Cloud Run as-is)
 web/            React front end, Vite, served on :3000
+                pages/ Landing, Console, Runs behind a topbar; one design system
 demo/           dataset generator for the two demo scenarios
 tests/          acceptance checks you can run before any demo
 ```

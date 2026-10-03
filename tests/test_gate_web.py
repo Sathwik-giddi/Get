@@ -6,7 +6,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-UI = "http://localhost:3000"
+UI = "http://localhost:3000/console"
 DATA = ROOT / "demo" / "dataset" / "scenario_1_convoy"
 
 TEXT_ROLES = [

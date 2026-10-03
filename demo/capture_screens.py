@@ -30,7 +30,7 @@ def main() -> int:
         page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
 
         for index, slug, scenario_name, folder in SCENARIOS:
-            page.goto(BASE, wait_until="networkidle")
+            page.goto(f"{BASE}/console" if folder else BASE, wait_until="networkidle")
             page.wait_for_timeout(1200)
 
             if folder:

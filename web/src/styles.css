@@ -820,3 +820,199 @@ details.raw h3 {
     gap: 14px;
   }
 }
+/* platform chrome */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 44px;
+  border-bottom: 1px solid var(--sb-hairline);
+  background: var(--sb-page);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar .wordmark {
+  font-family: var(--sb-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--sb-ink);
+  text-decoration: none;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 4px;
+}
+
+.topbar nav a {
+  color: var(--sb-ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--sb-radius-row);
+}
+
+.topbar nav a:hover {
+  background: var(--sb-surface);
+}
+
+.topbar nav a[aria-current='page'] {
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: var(--sb-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* shared page */
+
+.page {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 56px 44px 80px;
+}
+
+.page-title {
+  font-family: var(--sb-serif);
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+}
+
+.lede {
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--sb-ink);
+  max-width: 62ch;
+  margin: 0 0 8px;
+}
+
+/* landing */
+
+.hero-title {
+  font-family: var(--sb-serif);
+  font-size: 3.4rem;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  max-width: 16ch;
+}
+
+.landing .lede {
+  margin-bottom: 28px;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 64px;
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.button.primary,
+a.button.quiet {
+  min-height: 44px;
+  padding: 12px 22px;
+  border-radius: var(--sb-radius-row);
+  font-size: 1rem;
+}
+
+a.button.primary {
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--sb-accent);
+  border: 1px solid var(--sb-accent);
+}
+
+a.button.primary:hover {
+  background: var(--sb-accent-press);
+  border-color: var(--sb-accent-press);
+}
+
+a.button.quiet {
+  color: var(--sb-ink);
+  background: var(--sb-page);
+  border: 1px solid var(--sb-hairline);
+}
+
+a.button.quiet:hover {
+  background: var(--sb-surface);
+}
+
+.landing section {
+  margin-bottom: 56px;
+}
+
+.landing .trace {
+  max-width: 640px;
+}
+
+.capable {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 680px;
+}
+
+.capable li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--sb-surface);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.capable li:last-child {
+  border-bottom: none;
+}
+
+.site-footer {
+  border-top: 1px solid var(--sb-hairline);
+  padding-top: 18px;
+  margin-top: 8px;
+}
+
+.site-footer p {
+  font-size: 0.87rem;
+  color: var(--sb-ink-muted);
+  margin: 0;
+}
+
+/* runs page */
+
+.audit.wide {
+  margin-top: 26px;
+}
+
+.audit.wide td:last-child {
+  max-width: 340px;
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    padding: 12px 22px;
+  }
+
+  .page {
+    padding: 36px 22px 60px;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+}

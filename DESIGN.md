@@ -152,6 +152,16 @@ The note field clears on success so a recorded sentence never sits in the box in
 second recording, and it caps at 500 characters with the count visible. The sidebar history
 shows the verdict per run, because a trail you cannot scan is a trail you will not use.
 
+## Platform
+
+Three routes, one system. `/` lands: serif headline, the pipeline taught by the rail motif,
+two actions, an honest engine line, nothing it cannot prove. `/console` is the instrument
+itself. `/runs` is the full trail with verdicts. A topbar with the wordmark and two links
+holds them together; the active route underlines in the accent so position is always stated.
+Unknown routes get a real 404 page with a way back, not a dead end. New pages reuse tokens,
+eyebrows, rails, and tables. A fourth page that needs a fourth visual language does not
+belong here.
+
 ## Levers
 
 - One focal point per screen: the decision sentence.
