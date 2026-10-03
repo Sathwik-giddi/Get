@@ -4,7 +4,7 @@ A multi-modal decision agent. Hand it one messy operational situation: a dispatc
 blurry phone photo, a PDF bulletin. It works out which skills to run, runs them one source at a
 time, and returns a single call with the reasoning chain and confidence behind it.
 
-Built for **PS42**: scalable, multi-modal AI with Gemini and Google Cloud, making accurate,
+Built for **P42**: scalable, multi-modal AI with Gemini and Google Cloud, making accurate,
 context-aware, explainable decisions in dynamic environments.
 
 ## The idea in one paragraph
@@ -67,7 +67,7 @@ agent/          core.py orchestration, gemini.py provider + mock, schemas.py,
                 registry.py skill loader, storage.py uploads, audit.py log
 skills/         one SKILL.md per skill, frontmatter declares the contract
 api/            FastAPI service (deployable to Cloud Run as-is)
-web/             React front end, Vite, served on :3000
+web/            React front end, Vite, served on :3000
 demo/           dataset generator for the two demo scenarios
 tests/          acceptance checks you can run before any demo
 ```
@@ -208,7 +208,7 @@ The short version: this is an operations console, not a dashboard. One focal poi
 (the call), one accent color on exactly two elements, and a vertical trace rail that carries
 the plan and the reasoning chain as one continuous line of custody.
 
-`anti-slop/` holds the audits this interface went through and what each one changed.
+`docs/audits/` holds the design reviews this interface went through and what each one changed.
 
 ## Tests
 
@@ -233,7 +233,7 @@ contrast for all fourteen text roles against their real backgrounds, asserts the
 largest text on the page, walks the tab order and checks the focus ring, exercises the uploader
 and its remove buttons, walks four viewports for horizontal overflow, checks every tap target
 against 44px, and fails on console errors. It runs the app rather than trusting the stylesheet,
-which is how the defects in `anti-slop/audit-002` and `audit-003` were caught.
+which is how the defects in `docs/audits/audit-002` and `audit-003` were caught.
 
 ## Screenshots
 
