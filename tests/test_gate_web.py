@@ -27,6 +27,9 @@ TEXT_ROLES = [
     ("#officer-note", "officer note field"),
     (".officer .quiet", "officer accept button"),
     (".officer .quiet-solid", "officer override button"),
+    (".rail .eyebrow", "rail label"),
+    (".rail .hint", "rail hint"),
+    (".audit td", "audit cell"),
 ]
 
 PROBE = """(sel) => {

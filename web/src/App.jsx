@@ -29,19 +29,41 @@ function EmptyState({ onLoad }) {
       <p className="eyebrow" id="empty-heading">
         How it works
       </p>
-      <p className="srclist" aria-label="Example sources">
-        <span>a dispatch note</span>
-        <span>a bridge photo</span>
-        <span>a weather bulletin</span>
-      </p>
-      <p className="call-action">
-        Each source gets its own skill. The planner assigns, the skills extract, one step
-        decides. The call, its reasons, and its evidence land on this page.
-      </p>
-      <button className="primary empty-cta" type="button" onClick={onLoad}>
-        Load the convoy situation
-      </button>
-      <p className="hint">Or attach your own sources on the left and press Decide now.</p>
+      <ol className="trace">
+        <li>
+          <span className="num" aria-hidden="true">
+            1
+          </span>
+          <p className="skill">sources in</p>
+          <p className="srclist" aria-label="Example sources">
+            <span>a dispatch note</span>
+            <span>a bridge photo</span>
+            <span>a weather bulletin</span>
+          </p>
+        </li>
+        <li>
+          <span className="num" aria-hidden="true">
+            2
+          </span>
+          <p className="skill">skills assigned</p>
+          <p className="because">
+            The planner assigns one skill per source. The skills extract, they never decide.
+          </p>
+        </li>
+        <li>
+          <span className="num" aria-hidden="true">
+            3
+          </span>
+          <p className="skill">one call out</p>
+          <p className="because">
+            One step decides. The call, its reasons, and its evidence land on this page.
+          </p>
+          <button className="primary empty-cta" type="button" onClick={onLoad}>
+            Load the convoy situation
+          </button>
+          <p className="hint">Or attach your own sources on the left and press Decide now.</p>
+        </li>
+      </ol>
     </section>
   )
 }

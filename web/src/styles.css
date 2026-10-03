@@ -1,8 +1,10 @@
 :root {
-  --sb-page: #ffffff;
-  --sb-surface: #f7f7f5;
+  --sb-page: #faf6ef;
+  --sb-surface: #f1ece1;
   --sb-ink: #14161a;
+  --sb-ink-2: #1e2126;
   --sb-ink-muted: #57574f;
+  --sb-muted-light: #b9b6ad;
   --sb-hairline: #8c8a80;
   --sb-accent: #c2410c;
   --sb-accent-press: #9a3412;
@@ -17,6 +19,7 @@
   --sb-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   --sb-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
+  --sb-serif: Georgia, 'Times New Roman', serif;
 
   --sb-rail-w: 344px;
 }
@@ -82,13 +85,84 @@ body {
 }
 
 .rail {
-  border-right: 1px solid var(--sb-hairline);
-  background: var(--sb-surface);
+  border-right: none;
+  background: var(--sb-ink);
+  color: var(--sb-page);
   padding: 28px 22px 40px;
   overflow-y: auto;
   max-height: 100vh;
   position: sticky;
   top: 0;
+}
+
+.rail .eyebrow,
+.rail .field > label,
+.rail .field > .label {
+  color: var(--sb-muted-light);
+}
+
+.rail .hint {
+  color: var(--sb-muted-light);
+}
+
+.rail select,
+.rail textarea {
+  background: var(--sb-ink-2);
+  border-color: var(--sb-hairline);
+  color: var(--sb-page);
+}
+
+.rail select:focus,
+.rail textarea:focus,
+.rail input:focus,
+.rail :focus-visible {
+  outline-color: var(--sb-page);
+}
+
+.rail .dropzone {
+  background: transparent;
+  border-color: var(--sb-hairline);
+}
+
+.rail .dropzone strong {
+  color: var(--sb-page);
+}
+
+.rail .dropzone span {
+  color: var(--sb-muted-light);
+}
+
+.rail .filelist li {
+  background: var(--sb-ink-2);
+  border-color: var(--sb-hairline);
+  color: var(--sb-page);
+}
+
+.rail .filelist li button {
+  color: var(--sb-muted-light);
+}
+
+.rail .filelist li button:hover {
+  color: var(--sb-page);
+}
+
+.rail .audit th {
+  color: var(--sb-muted-light);
+  border-bottom-color: var(--sb-hairline);
+}
+
+.rail .audit td {
+  border-bottom-color: var(--sb-ink-2);
+  color: var(--sb-page);
+}
+
+.rail .audit td.at {
+  color: var(--sb-muted-light);
+}
+
+.rail .empty {
+  color: var(--sb-page);
+  border-color: var(--sb-ink-2);
 }
 
 .main {
@@ -396,6 +470,7 @@ button.quiet-solid:disabled {
 }
 
 .call .call-text {
+  font-family: var(--sb-serif);
   font-size: 2.6rem;
   line-height: 1.18;
   font-weight: 650;
@@ -550,6 +625,7 @@ button.quiet-solid:disabled {
 }
 
 .trace .claim {
+  font-family: var(--sb-serif);
   font-size: 1.04rem;
   font-weight: 600;
   margin: 0 0 6px;

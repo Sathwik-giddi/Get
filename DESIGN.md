@@ -35,12 +35,15 @@ Warm-neutral paper, one accent, functional state colors.
 
 | Role | Hex | Why |
 | --- | --- | --- |
-| Page | `#FFFFFF` | the officer may be reading in daylight or in a vehicle |
-| Raised surface | `#F7F7F5` | warm neutral, so the accent reads as a signal rather than as part of the greys |
-| Ink | `#14161A` | 18.11:1 on page, the decision sentence sits here |
-| Muted ink | `#57574F` | 7.29:1, captions and labels stay readable |
-| Hairline | `#8C8A80` | 3.46:1, meets the 3:1 non-text bar for input borders |
-| Accent | `#C2410C` | high-visibility orange, 5.18:1 on page and 4.83:1 on the raised surface |
+| Page | `#FAF6EF` | warm paper that reads warm, not clinical; the officer may be reading in daylight or in a vehicle |
+| Raised surface | `#F1ECE1` | deepened to hold the gap against the warmer page |
+| Ink | `#14161A` | 16.81:1 on page, the decision sentence sits here |
+| Console rail | `#14161A` | the sidebar commits to being an instrument panel, not furniture |
+| Rail ink | `#1E2126` | input and file-row fill on the rail, one step above the rail itself |
+| Muted ink | `#57574F` | 6.77:1 on page, captions and labels stay readable |
+| Muted on rail | `#B9B6AD` | 8.93:1 on the rail, small table text stays legible |
+| Hairline | `#8C8A80` | 3.46:1 on page for input borders; 4.66:1 on rail fill, so one hairline serves both |
+| Accent | `#C2410C` | high-visibility orange, 4.81:1 on page; never set as text on the raised surface |
 
 Accent goes on exactly two things: the decision sentence, and the primary control. Nowhere
 else. An accent on every element is not an accent.
@@ -60,8 +63,10 @@ alone.
 
 ## Typography
 
-Prose in the platform sans, because the officer is reading sentences and the default is
-already good at that.
+Three voices, each with one job. Sans for interface, because the officer operates controls
+and the default is already good at that. Serif (Georgia, system stock, never a network
+font) for the call and the chain claims, because a verdict should sound editorial, not
+administrative. Trust is a voice as much as a trace.
 
 Monospace is functional, not decorative. It is used for exactly one category: machine
 provenance. Run ids, source ids, latencies, raw skill output keys. That data gets copied
@@ -126,9 +131,9 @@ have. The engine notice sits under the masthead as one muted status line, never 
 Honesty is a line item, not the focal point.
 
 When there is genuinely nothing to run, the main column carries the pitch instead of a void:
-three source chips, one sentence on the pipeline, and a single action that loads the convoy
-situation. The empty state sells nothing and apologizes for nothing; it says what goes in,
-what comes out, and what fills the screen.
+the pipeline taught by shape, three numbered rail steps reusing the trace motif, ending in the
+single action that loads the convoy situation. The empty state sells nothing and apologizes
+for nothing; it says what goes in, what comes out, and what fills the screen.
 
 ## Duty officer
 
