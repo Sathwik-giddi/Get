@@ -29,8 +29,8 @@ SCHEMA = {
     "total_latency_ms": "INT64",
 }
 
-TABLE = os.getenv("BIGQUERY_TABLE", "space_bunny.decisions")
-DATASET = os.getenv("BIGQUERY_DATASET", "space_bunny_audit")
+TABLE = os.getenv("BIGQUERY_TABLE", "get_audit.decisions")
+DATASET = os.getenv("BIGQUERY_DATASET", "get_audit")
 PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "")
 
 

@@ -29,7 +29,7 @@ curl -fsS "http://localhost:$API_PORT/health" && echo
 if [ "$MODE" = "dev" ]; then
   echo "starting web on :$WEB_PORT (vite dev, proxying /api to :$API_PORT)"
   cd web
-  SPACE_BUNNY_API="http://localhost:$API_PORT" exec npm run dev -- --port "$WEB_PORT"
+  GET_API="http://localhost:$API_PORT" exec npm run dev -- --port "$WEB_PORT"
 else
   echo "building web"
   (cd web && npm run build)

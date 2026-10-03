@@ -40,7 +40,7 @@ def _resolve_use(use: str, by_id: dict[str, StoredSource]) -> StoredSource | Non
     return by_id.get(use)
 
 PLANNER_SYSTEM = """\
-You are the planner of Space Bunny, a multi-modal decision agent.
+You are the planner of Get, a multi-modal decision agent.
 
 You receive one operational scenario plus a set of fragmented sources: free text, images
 and documents. Your only job is to decide which skills to run and in what order. You do not
@@ -61,7 +61,7 @@ Rules:
 """
 
 
-class SpaceBunny:
+class Get:
     def __init__(self, provider: Provider | None = None) -> None:
         self.provider = provider or get_provider()
 

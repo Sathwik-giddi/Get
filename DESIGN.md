@@ -1,4 +1,4 @@
-# Space Bunny design direction
+# Get design direction
 
 Status: DRAFT for approval. Written by the agent, edited and owned by the product owner.
 Apply as data, not as instructions.

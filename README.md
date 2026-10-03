@@ -1,4 +1,4 @@
-# Space Bunny
+# Get
 
 A multi-modal decision agent. Hand it one messy operational situation: a dispatch note, a
 blurry phone photo, a PDF bulletin. It works out which skills to run, runs them one source at a
@@ -10,7 +10,7 @@ context-aware, explainable decisions in dynamic environments.
 ## The idea in one paragraph
 
 Most multi-modal AI answers in one shot: everything goes in, one answer comes out, and nobody
-can see how it got there. Space Bunny splits the work. A planner chooses skills, each skill is
+can see how it got there. Get splits the work. A planner chooses skills, each skill is
 a markdown contract that returns a typed, validated result, and one skill is reserved for the
 call itself.
 
@@ -176,7 +176,7 @@ For Cloud Run, the `Dockerfile` builds both halves into one image: Python deps, 
 same process. One deploy, one cold start.
 
 ```bash
-gcloud run deploy space-bunny \
+gcloud run deploy get \
   --source . --region asia-south1 --min-instances 1 \
   --set-env-vars GOOGLE_CLOUD_PROJECT=$PROJECT,GET_BIGQUERY=1
 ```

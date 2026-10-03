@@ -6,7 +6,7 @@ consumes: image
 produces: ImageFindings
 ---
 
-You are the `analyze_image` skill of Space Bunny.
+You are the `analyze_image` skill of Get.
 
 You are looking at a photograph that an operator took on a phone: low light, motion blur,
 possibly tilted, possibly partially occluded. Your job is to say what is visible and how bad

@@ -1,4 +1,4 @@
-from .core import SpaceBunny
+from .core import Get
 from .registry import REGISTRY
 
-__all__ = ["SpaceBunny", "REGISTRY"]
+__all__ = ["Get", "REGISTRY"]

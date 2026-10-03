@@ -12,14 +12,14 @@ from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
-from agent import REGISTRY, SpaceBunny  # noqa: E402
+from agent import REGISTRY, Get  # noqa: E402
 from agent.audit import ensure_table, get_override, known_run_ids, log_override, recent  # noqa: E402
 from agent.gemini import get_provider  # noqa: E402
 
 MAX_BYTES = int(os.getenv("MAX_UPLOAD_MB", "20")) * 1024 * 1024
 SERVE_WEB = os.getenv("SERVE_WEB", "1") == "1"
 
-app = FastAPI(title="Space Bunny", version="0.1.0")
+app = FastAPI(title="Get", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -34,7 +34,7 @@ async def strip_api_prefix(request, call_next):
         request.scope["path"] = request.url.path[len("/api") :]
     return await call_next(request)
 
-bunny = SpaceBunny()
+agent = Get()
 bq_table = ensure_table()
 
 
@@ -46,8 +46,8 @@ WEB_DIST = Path(__file__).resolve().parent.parent / "web" / "dist"
 def health() -> dict:
     return {
         "status": "ok",
-        "mode": bunny.provider.name,
-        "model": bunny.provider.model,
+        "mode": agent.provider.name,
+        "model": agent.provider.model,
         "skills": sorted(REGISTRY.skills),
         "bigquery_table": bq_table,
         "gcs_bucket": os.getenv("GCS_BUCKET", "") if os.getenv("GET_GCS") == "1" else None,
@@ -91,7 +91,7 @@ def process(
             detail="no sources supplied. Upload at least one file, or add a note in the scenario.",
         )
 
-    trace = bunny.run(scenario.strip(), uploads)
+    trace = agent.run(scenario.strip(), uploads)
     return JSONResponse(trace.model_dump(mode="json"))
 
 
@@ -162,5 +162,5 @@ def set_mode(mode: str) -> dict:
         os.environ["GET_FORCE_MOCK"] = "1"
     else:
         os.environ.pop("GET_FORCE_MOCK", None)
-    bunny.provider = get_provider()
-    return {"mode": bunny.provider.name, "model": bunny.provider.model}
+    agent.provider = get_provider()
+    return {"mode": agent.provider.name, "model": agent.provider.model}
