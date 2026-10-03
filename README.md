@@ -209,7 +209,8 @@ The short version: this is an operations console, not a dashboard. One focal poi
 (the call), one accent color on exactly two elements, and a vertical trace rail that carries
 the plan and the reasoning chain as one continuous line of custody.
 
-`docs/audits/` holds the design reviews this interface went through and what each one changed.
+Every interface pass went through a written design review, each recording what changed
+and why.
 
 ## Tests
 
@@ -234,7 +235,7 @@ contrast for all fourteen text roles against their real backgrounds, asserts the
 largest text on the page, walks the tab order and checks the focus ring, exercises the uploader
 and its remove buttons, walks four viewports for horizontal overflow, checks every tap target
 against 44px, and fails on console errors. It runs the app rather than trusting the stylesheet,
-which is how the defects in `docs/audits/audit-002` and `audit-003` were caught.
+which is how the specificity and rail-duplication defects were caught during review.
 
 ## Screenshots
 
